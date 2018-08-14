@@ -1,0 +1,27 @@
+<%= form_with(model:@product, local: true) do |form| %>
+
+
+ <p>
+   <%= form.label :title %><br>
+   <%= form.text_field :title %>
+ </p>
+
+ <p>
+   <%= form.label :Quantity %><br>
+   <%= form.text_field :quantity %>
+ </p>
+
+ <p>
+   <%= form.label :Price %><br>
+   <%= form.text_field :price %>
+ </p>
+
+ <p>
+   <%= form.label :Description %><br>
+   <%= form.text_field :description %>
+ </p>
+
+ <p>
+   <%= form.submit %>
+ </p>
+<% end %>
