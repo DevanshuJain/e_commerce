@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
 	before_action :set_product, only: [:show, :edit, :update, :destroy]
 
 	def index
-	@product=Product.all
+	  @products = Product.all
+	end
+
+	def seller_product
+    @products = current_seller.products
 	end
 
 	def show
@@ -11,47 +15,46 @@ class ProductsController < ApplicationController
 	def edit
 	end
 
-    def update
+  def update
 	  if @product.update_attributes(product_params)
-        flash[:success] = "Task updated successfully"
-        redirect_to products_path
-      else
-        render 'new'
-      end
-
+      flash[:success] = "Task updated successfully"
+      redirect_to products_path
+    else
+      render 'new'
+    end
 	end
 	
 	def destroy
+    if @product.destroy
+      redirect_to seller_product_path
+    else
+      render 'new'
+    end  
 	end
 	
 	def new
-		@product=Product.new
+		@product = current_seller.products.new
 	end
 
 	def create
-      @product=Product.new(product_params)
-	  @product.seller_id = current_seller.id
-		 # @product.seller.id = current_seller.id
-	  if @product.save
-	    redirect_to new_product_path, note: 'product add successfully'
-      else
-		render 'new'
+    @product = current_seller.products.new(product_params)
+		if @product.save
+      redirect_to new_product_path, note: 'product add successfully'
+    else
+  		render 'new'
 	  end
-    end
-
-   private
-   
-   def set_product
-     @product = Product.find(params[:id])
-   end
+  end
 
 
-   def product_params
-     params.require(:product).permit(:title, :description, :price, :quantity)    
-   end
+  private
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
+  def product_params
+    params.require(:product).permit(:title, :description, :price, :quantity, :avatars)    
+  end
 end
 
 
-   # @product.seller_id = current_seller.id
-
+  

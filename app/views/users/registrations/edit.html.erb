@@ -3,6 +3,50 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
+
+
+
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
+
+ <div class="field">
+    <%= f.label :mobile %><br />
+    <%= f.text_field :mobile, autofocus: true, autocomplete: "mobile" %>
+  </div>
+
+
+  <div class="field">
+   <%= f.fields_for :addresses, Address.new do |address_form|%>
+     <div>
+       <%= address_form.label :adress %><br />
+       <%= address_form.text_field :adress, autofocus: true, autocomplete: "adress" %>
+     </div>
+     
+     <div class="field">
+       <%= address_form.label :city %><br />
+       <%= address_form.text_field :city, autofocus: true, autocomplete: "city" %>
+     </div>
+
+     <div class="field">
+       <%= address_form.label :State %><br />
+       <%= address_form.text_field :state, autofocus: true, autocomplete: "state" %>
+     </div>
+     
+     <div class="field">
+       <%= address_form.label :Pin %><br />
+       <%= address_form.text_field :pin, autofocus: true, autocomplete: "pin" %>
+     </div>
+    <% end %>
+  </div>
+
+
+
+
+
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

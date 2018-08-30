@@ -1,0 +1,30 @@
+<% total =0 %>
+<% pr =0 %>
+<h1>cart</h1>
+<table class="table">
+  <thead>
+  <th>title</th>
+	<th>price</th>
+	<th>quantity</th>
+  <th>Total</th>
+  <thead>
+  <tbody>
+  	<% @carts.each do |cart| %>
+  	  <tr>
+  	    <td><%= cart.product.title %></td>
+        <td><%= cart.product.price %></td>
+        <td><%= cart.quantity %></td>
+        <td><%= cart.rate %></td>
+        <td><%= link_to 'remove_product', cart_path(cart), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% total = (total) + (cart.rate) %>
+        <% pr = pr + cart.quantity %>
+
+	    </tr>
+  	<% end %>    
+  </tbody>
+ </table>
+   <p>total_ammount = <%= total %></p>
+   <p>total_quantity = <%= pr %></p>
+    <%= render 'charges/new' %>
+  <p><%= link_to 'back', products_path %></p>
+  

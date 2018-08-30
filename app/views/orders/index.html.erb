@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+  	<tr>
+	  <th>order_id</th>
+	  <th>amount</th>
+	  <th>status</th>
+  	</tr>
+  </thead>
+  <tbody>
+  	<% @orders.each do |c| %>
+      <tr>
+	    <th><%= c.id %></th>
+	    <th><%= c.total_ammount %></th>
+	    <th> Done </th>
+	  </tr>
+    <% end %>
+  </tbody>
+</table>
