@@ -7,12 +7,13 @@
   	</tr>
   </thead>
   <tbody>
-  	<% @orders.each do |c| %>
+  	<% @orders.each do |order| %>
       <tr>
-	    <th><%= c.id %></th>
-	    <th><%= c.total_ammount %></th>
+	    <th><%= order.id %></th>
+	    <th><%= order.total_ammount %></th>
 	    <th> Done </th>
 	  </tr>
     <% end %>
   </tbody>
 </table>
+<p><%= link_to 'back', products_path %></p>

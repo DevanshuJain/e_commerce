@@ -10,6 +10,7 @@
  <table class="table">
     <thead>
       <tr>
+       <th>picture</th>
        <th>title</th>
        <th>Price</th>
        <th>description</th>
@@ -19,8 +20,9 @@
     <tbody>
       <% @products.each do |product| %>
         <tr>
+          <td><%= image_tag(product.avatars.last, height: '100', width: '80') %></td>
           <td><%= product.title %></td>
-          <td><%= product.quantity %></td>
+       
           <td><%= product.price %></td>
           <td><%= product.description %></td>
           <td type="button" class="btn btn-info"><%= link_to 'Show', product_path(product) %></td>

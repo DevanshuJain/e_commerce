@@ -20,7 +20,7 @@ class ChargesController < ApplicationController
       @amount = @order.total_ammount
       @order.save
     end
-
+    redirect_to(products_url, :notice => 'Order was successfully Placed.')
     customer = Stripe::Customer.create(
       :email => params[:stripeEmail],
       :source  => params[:stripeToken]

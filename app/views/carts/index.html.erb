@@ -3,6 +3,7 @@
 <h1>cart</h1>
 <table class="table">
   <thead>
+  <th>picture</th>
   <th>title</th>
 	<th>price</th>
 	<th>quantity</th>
@@ -11,11 +12,13 @@
   <tbody>
   	<% @carts.each do |cart| %>
   	  <tr>
+        <td><%= image_tag(cart.product.avatars.last, height: '50', width: '40') %></td>
   	    <td><%= cart.product.title %></td>
         <td><%= cart.product.price %></td>
         <td><%= cart.quantity %></td>
         <td><%= cart.rate %></td>
-        <td><%= link_to 'remove_product', cart_path(cart), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td type="button" class="btn btn-info"><%= link_to 'edit',  edit_cart_path(cart) %></td>
+        <td type="button" class="btn btn-info"><%= link_to 'remove_product', cart_path(cart), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% total = (total) + (cart.rate) %>
         <% pr = pr + cart.quantity %>
 

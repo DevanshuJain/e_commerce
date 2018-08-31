@@ -1,0 +1,25 @@
+<%= form_with(model:@cart, local: true) do |form| %>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= image_tag(@product.avatars.last, height: '450', width: '400') %>   
+    </div>
+
+    <div class="col-sm-8" >
+      <p>
+        <strong>quantity: </strong>
+        <%= form.text_field :quantity %> 
+      </p>
+      <p>
+        <strong>Price: </strong>
+  	    <%= @cart.rate %>
+      </p>
+      <p>
+  	    <strong>description: </strong>
+        <%= @product.description %>
+      </p>
+      <p type="button" class="btn btn-info">
+          <%= form.submit %>
+      </p>
+    </div> 
+  </div>     
+<% end %>
