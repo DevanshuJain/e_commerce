@@ -24,6 +24,19 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+
+  # def create
+  #   user = User.find_by_email(sign_in_params[:email])
+  #     if user && user.valid_password?(sign_in_params[:password])
+  #     @current_user = user
+  #   else
+  #     render json: { errors: { 'email or password' => ['is invalid'] } }, status: :unprocessable_entity
+  #   end
+  # end
+
+
+
   def after_sign_in_path_for(resource)
     products_path
   end

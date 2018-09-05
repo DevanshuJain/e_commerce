@@ -13,6 +13,14 @@ gem 'jquery-rails'
 gem 'authority'
 gem 'rolify'
 gem 'stripe'
+
+gem 'omniauth'
+gem 'therubyracer'
+gem 'omniauth-digitalocean'
+gem 'omniauth-twitter'
+gem 'simple_token_authentication'
+
+gem 'devise_token_auth'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
